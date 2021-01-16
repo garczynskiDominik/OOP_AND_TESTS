@@ -1,12 +1,13 @@
 package edu.domgie.sda.homework1;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Person implements Comparable<Person> {
     private String firstName;
     private String lastName;
     private long IdNumber;
-    private int age;
+    private Integer age;
     private String sex;
 
     public Person(String firstName, String lastName, long idNumber, int age, String sex) {
@@ -21,53 +22,44 @@ public class Person implements Comparable<Person> {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public long getIdNumber() {
         return IdNumber;
     }
 
-    public void setIdNumber(long idNumber) {
-        IdNumber = idNumber;
-    }
-
-    public int getAge() {
+    public Integer getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    @Override
+    public String toString() {
+        return "Person = " +
+                firstName +
+                ", " + lastName +
+                ", PESEL:" + IdNumber +
+                ", age: " + age +
+                ", sex:" + sex;
     }
 
     @Override
-    public String toString() {
-        return "Person=" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", IdNumber=" + IdNumber +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return IdNumber == person.IdNumber && age == person.age && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(sex, person.sex);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, IdNumber, age, sex);
+    }
 
     @Override
     public int compareTo(Person o) {

@@ -1,6 +1,5 @@
 package edu.domgie.sda.collections;
 
-import java.util.Collections;
 import java.util.Objects;
 
 public class CollectionsCar  implements Comparable<CollectionsCar>{
