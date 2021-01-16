@@ -1,0 +1,11 @@
+1. Klasa Person
+    imię, nazwisko, pesel, wiek, płeć
+    konstruktory, gettery, settery jak będzie potrzeba
+2. Klasa Parent
+    dziedziczy po Person
+    dodatkowo pole z listą / setem przechowującym dzieci
+3. Klasa PersonList
+    jak dodajemy osoby to w przypadku duplikatu rzucamy PersonAlreadyInsertedException
+    wypisać wszystkich w kolejności zależnej od wieku
+    wypisać wszystkich w kolejności zależnej od nazwisko, imię
+    wypisać wszystkich dorosłych - najpierw kobiety alfabetycznie, potem mężczyzn alfabetycznie,
