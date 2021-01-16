@@ -18,4 +18,8 @@ public class FerrariCar extends SportCar{
     public String getColor(String addon){
         return "Ferrari os of collor" + addon;
     }
+
+    public String getOriginalColor(){
+        return super.getColor();
+    }
 }
