@@ -5,8 +5,9 @@ public class Car {
     private String color;
 
 
+    public Car() {
 
-
+    }
 
     public String getName() {
         return name;
