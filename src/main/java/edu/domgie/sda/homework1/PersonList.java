@@ -17,9 +17,9 @@ public class PersonList {
         Person kasia = new Person("Kasia", "Oczko", 93235439751L, 23, "female");
         Person jacek = new Person("Jacek", "Stepien", 25765689751L, 16, "male");
         Person natalia = new Person("Natalia", "Starenga", 27265987452L, 14, "female");
-        Parent ryszard = new Parent("Ryszard", "Garczynski", 54896325871L, 67, "male", new ArrayList());
+        Parent ryszard = new Parent("Ryszard", "Garczynski", 54896325871L, 67, "male");
         Person arek = new Person("Arek", "Kiliszek", 92634578469L, 29, "male");
-        Parent maria = new Parent("Maria", "Orzech", 603265987512L, 62, "female", new ArrayList());
+        Parent maria = new Parent("Maria", "Orzech", 603265987512L, 62, "female");
 
 //add childs to Paretn list, Ryszard is parent
         ryszard.addChildToParentList(dominik);
