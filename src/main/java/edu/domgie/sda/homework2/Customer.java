@@ -7,23 +7,23 @@ public class Customer {
     private String firstName;
     private String lastName;
     private int idNumber;
-    private List<AcountClass> listOfAccounts;
+    private List<Acount> listOfAccounts;
 
     public Customer(String firstName, String lastName, int idNumber) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.idNumber = idNumber;
-        this.listOfAccounts = new ArrayList<AcountClass>();
+        this.listOfAccounts = new ArrayList<Acount>();
     }
 
     //założenie rachunku dla klienta
-    public void addAccountToList(AcountClass account) {
+    public void addAccountToList(Acount account) {
         listOfAccounts.add(account);
     }
 
     //usunięcie rachunku dla klienta (jeśli stan środków = 0)
-    public void removeAccountFromCustomerListIFSaldo0(AcountClass account) {
+    public void removeAccountFromCustomerListIFSaldo0(Acount account) {
         if (account.getSaldo() == 0) {
             listOfAccounts.remove(account);
         }
@@ -45,13 +45,6 @@ public class Customer {
                     + ", accountNumber"
                     + account.getAccountNumber()));
         });
-
-//        for (AcountClass account : listOfAccounts) {
-//            System.out.println("Account: type: "
-//                    + account.getType()
-//                    + ", accountNumber"
-//                    + account.getAccountNumber());
-//        }
     }
 
 

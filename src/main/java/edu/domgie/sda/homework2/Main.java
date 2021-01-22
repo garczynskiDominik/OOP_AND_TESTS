@@ -16,8 +16,8 @@ public class Main {
 
 
         //dodanie rachunkow do klienta
-        AcountClass loydsPersonalDominik = new AcountClass(TypeOfAccount.PERSONAL_ACCOUNT, 1000D, 271140204343535352L);
-        AcountClass loydsSavingDominik = new AcountClass(TypeOfAccount.SAVINGS_ACCOUNT, 5000D, 1111111111155555555L);
+        Acount loydsPersonalDominik = new Acount(TypeOfAccount.PERSONAL_ACCOUNT, 1000D, 271140204343535352L);
+        Acount loydsSavingDominik = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 5000D, 1111111111155555555L);
         dominik.addAccountToList(loydsPersonalDominik);
         dominik.addAccountToList(loydsSavingDominik);
 
@@ -27,12 +27,12 @@ public class Main {
         loydsSavingDominik.withDraw(6000);
 
         //dodanie rachunku do klienta
-        AcountClass loydsSavingNatalia = new AcountClass(TypeOfAccount.SAVINGS_ACCOUNT, 2000D, 89561234569845321L);
+        Acount loydsSavingNatalia = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 2000D, 89561234569845321L);
         natalia.addAccountToList(loydsSavingNatalia);
 
         //dodanie rachunków do klienta
-        AcountClass loydsSavingPawel = new AcountClass(TypeOfAccount.SAVINGS_ACCOUNT, 0, 123654789L);
-        AcountClass loydsPersonalPawel = new AcountClass(TypeOfAccount.PERSONAL_ACCOUNT, 100D, 789654123987L);
+        Acount loydsSavingPawel = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 0, 123654789L);
+        Acount loydsPersonalPawel = new Acount(TypeOfAccount.PERSONAL_ACCOUNT, 100D, 789654123987L);
         pawel.addAccountToList(loydsPersonalPawel);
         pawel.addAccountToList(loydsSavingPawel);
 

@@ -1,11 +1,11 @@
 package edu.domgie.sda.homework2;
 
-public class AcountClass {
+public class Acount {
     private TypeOfAccount type;
     private double saldo;
     private long accountNumber;
 
-    public AcountClass(TypeOfAccount type, double saldo, long accountNumber) {
+    public Acount(TypeOfAccount type, double saldo, long accountNumber) {
         this.type = type;
         this.saldo = saldo;
         this.accountNumber = accountNumber;
