@@ -34,9 +34,26 @@ public class Customer {
     }
 
     //wypisanie rachunków podanego klienta (z saldem lub bez)
-    public void showAccountsOfCustomer() {
+    public void showAccountsOfCustomerWithSaldo() {
         listOfAccounts.forEach(System.out::println);
     }
+
+    public void showAccountsOfCustomerWithoutSaldo() {
+        listOfAccounts.stream().forEach(account->{
+            System.out.println(("Account: type: "
+                    + account.getType()
+                    + ", accountNumber"
+                    + account.getAccountNumber()));
+        });
+
+//        for (AcountClass account : listOfAccounts) {
+//            System.out.println("Account: type: "
+//                    + account.getType()
+//                    + ", accountNumber"
+//                    + account.getAccountNumber());
+//        }
+    }
+
 
     @Override
     public String toString() {

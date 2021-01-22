@@ -36,9 +36,7 @@ public class Bank {
 
     //wypisanie wszystkich rachunków w banku(z saldami lub bez)
     public void showAllAccountsFromBankWithSaldo() {
-        for (Customer client : listOfClients) {
-            System.out.println(client.getListOfAccounts());
-        }
+        listOfClients.forEach(client -> System.out.println(client.getListOfAccounts()));
     }
 
 //    public void showAllAccountsFromBankWithoutSaldo() {

@@ -46,11 +46,14 @@ public class Main {
         //wyswietlenie uzytkowników z lista rachunkow z saldem
         loyds.showCustomersAccountsWithSaldo();
         System.out.println("---------------------");
-        //wyswietlenie rachunkow uzytkownika
-        dominik.showAccountsOfCustomer();
+        //wyswietlenie rachunkow uzytkownika z saldem
+        dominik.showAccountsOfCustomerWithSaldo();
         System.out.println("---------------------");
-        //wyswietlenie rachunkow w banku
+        dominik.showAccountsOfCustomerWithoutSaldo();
+        System.out.println("---------------------");
+        //wyswietlenie rachunkow w banku z saldem
         loyds.showAllAccountsFromBankWithSaldo();
+        System.out.println("----------------------");
 
 
     }
