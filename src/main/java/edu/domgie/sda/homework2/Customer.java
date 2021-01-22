@@ -3,27 +3,28 @@ package edu.domgie.sda.homework2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer{
+public class Customer {
     private String firstName;
     private String lastName;
     private int idNumber;
-    private List listOfAccounts;
+    private List<AcountClass> listOfAccounts;
 
     public Customer(String firstName, String lastName, int idNumber) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.idNumber = idNumber;
-        this.listOfAccounts = new ArrayList<Account>();
+        this.listOfAccounts = new ArrayList<AcountClass>();
     }
 
-    public void addAccountToList(Account account) {
+    //założenie rachunku dla klienta
+    public void addAccountToList(AcountClass account) {
         listOfAccounts.add(account);
     }
 
-
-    public void removeAccountFromCustomerList(Account account) {
-        if (account.getSaldo <= 0) {
+    //usunięcie rachunku dla klienta (jeśli stan środków = 0)
+    public void removeAccountFromCustomerListIFSaldo0(AcountClass account) {
+        if (account.getSaldo() == 0) {
             listOfAccounts.remove(account);
         }
     }
@@ -32,6 +33,10 @@ public class Customer{
         return listOfAccounts;
     }
 
+    //wypisanie rachunków podanego klienta (z saldem lub bez)
+    public void showAccountsOfCustomer() {
+        listOfAccounts.forEach(System.out::println);
+    }
 
     @Override
     public String toString() {

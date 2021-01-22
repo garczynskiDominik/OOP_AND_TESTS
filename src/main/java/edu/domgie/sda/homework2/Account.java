@@ -1,6 +1,5 @@
 package edu.domgie.sda.homework2;
 
-
 public class Account {
     private TypeOfAccount typeOfAccount;
     private double saldo;
@@ -10,10 +9,6 @@ public class Account {
         this.typeOfAccount = typeOfAccount;
         this.saldo = saldo;
         this.accountNumber = accountNumber;
-    }
-
-    public TypeOfAccount getTypeOfAccount() {
-        return typeOfAccount;
     }
 
     public double getSaldo() {

@@ -5,39 +5,46 @@ import java.util.List;
 
 public class Bank {
     private String nameBank;
-    private List listOfClients;
+    private List<Customer> listOfClients;
 
     public Bank(String nameBank) {
         this.nameBank = nameBank;
         this.listOfClients = new ArrayList();
     }
 
-    public void addCustomerToList(Customer customer) {
+    //założenie klienta
+    public void addCustomerToBank(Customer customer) {
         listOfClients.add(customer);
     }
 
-    public void removerCustomer(Customer customer) {
+    //usunięcie klienta (jeśli nie ma rachunków)
+    public void removerCustomerIfDontHaveAccounts(Customer customer) {
         if (customer.getListOfAccounts().size() == 0) {
             listOfClients.remove(customer);
         }
     }
 
-    public List getListOfClients() {
-        return listOfClients;
+    //wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
+    public void showCustomersAccountsWithSaldo() {
+        listOfClients.forEach(System.out::println);
     }
 
+//    public void showCustomersAccountsWithoutSaldo() {
+//        listOfClients.forEach(System.out::println);
+//    }
 
-    //operacje:
 
-//założenie klienta
-//założenie rachunku dla klienta
-//usunięcie rachunku dla klienta (jeśli stan środków = 0)
-//usunięcie klienta (jeśli nie ma rachunków)
-//wpłata na rachunek
-//wypłata z rachunku (do wysokości salda)
-//wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
-//wypisanie rachunków podanego klienta (z saldem lub bez)
-//wypisanie wszystkich rachunków w banku(z saldami lub bez)
+    //wypisanie wszystkich rachunków w banku(z saldami lub bez)
+    public void showAllAccountsFromBankWithSaldo() {
+        for (Customer client : listOfClients) {
+            System.out.println(client.getListOfAccounts());
+        }
+    }
 
+//    public void showAllAccountsFromBankWithoutSaldo() {
+//        for (Customer client : listOfClients) {
+//            System.out.println(client.getListOfAccounts());
+//        }
+//    }
 
 }
