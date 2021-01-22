@@ -18,6 +18,9 @@ public class Person implements Comparable<Person> {
         this.sex = sex;
     }
 
+    public Person() {
+    }
+
     public String getFirstName() {
         return firstName;
     }

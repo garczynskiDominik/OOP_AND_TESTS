@@ -7,8 +7,9 @@ import java.util.stream.Collectors;
 
 public class PersonList {
 
-
     public static void main(String[] args) {
+
+
 //new Person
         Person dominik = new Person("Dominik", "Garczynski", 94235689751L, 27, "male");
         Person tomek = new Person("Tomek", "Kloc", 96235689374L, 26, "male");
@@ -20,16 +21,17 @@ public class PersonList {
         Parent ryszard = new Parent("Ryszard", "Garczynski", 54896325871L, 67, "male");
         Person arek = new Person("Arek", "Kiliszek", 92634578469L, 29, "male");
         Parent maria = new Parent("Maria", "Orzech", 603265987512L, 62, "female");
+        Parent zbigniew = new Parent("Zbigniew", "Szumiło", 59123645895L, 62,"male");
 
 //add childs to Paretn list, Ryszard is parent
-        ryszard.addChildToParentList(dominik);
-        ryszard.addChildToParentList(tomek);
-        ryszard.addChildToParentList(krzysiek);
+        ryszard.addChildToParentList(ryszard,dominik);
+        ryszard.addChildToParentList(ryszard,tomek);
+        ryszard.addChildToParentList(ryszard,krzysiek);
 
         //add childs to Parent lit, Maria is parent
-        maria.addChildToParentList(natalia);
-        maria.addChildToParentList(jacek);
-        maria.addChildToParentList(kasia);
+        maria.addChildToParentList(maria,natalia);
+        maria.addChildToParentList(maria,jacek);
+        maria.addChildToParentList(maria,kasia);
 
         List<Person> personList = new ArrayList<>();
 //add Person to PersonList
@@ -43,6 +45,7 @@ public class PersonList {
         addPersonToList(natalia, personList);
         addPersonToList(arek, personList);
         addPersonToList(maria, personList);
+        addPersonToList(zbigniew,personList);
         // after add dawid one more time, program throw exception
 //        addPersonToList(dawid,personList);
 
@@ -84,10 +87,11 @@ public class PersonList {
     }
 
     public static void addPersonToList(Person person, List list) {
-        if (!list.contains(person)) {
-            list.add(person);
-        } else {
-            throw new PersonAlreadyInsertedException("This person is on the list" + person);
-        }
+                   if (!list.contains(person)) {
+                list.add(person);
+            } else {
+                throw new PersonAlreadyInsertedException("This person is on the list" + person);
+            }
+
     }
 }
