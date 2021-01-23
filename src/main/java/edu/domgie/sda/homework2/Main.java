@@ -1,12 +1,15 @@
 package edu.domgie.sda.homework2;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+
         Bank loyds = new Bank("Loyds Bank");
         // tworzenie nowych klientów
-        Customer dominik = new Customer("Dominik", "Garczynski", 123456789);
-        Customer natalia = new Customer("Natalia", "Starenga", 987654321);
-        Customer pawel = new Customer("Pawel", "Wolos", 456789123);
+        Customer dominik = new Customer("Dominik", "Garczynski");
+        Customer natalia = new Customer("Natalia", "Starenga");
+        Customer pawel = new Customer("Pawel", "Wolos");
 
 
         //dodanie klientow do banku
@@ -16,23 +19,25 @@ public class Main {
 
 
         //dodanie rachunkow do klienta
-        Acount loydsPersonalDominik = new Acount(TypeOfAccount.PERSONAL_ACCOUNT, 1000D, 271140204343535352L);
-        Acount loydsSavingDominik = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 5000D, 1111111111155555555L);
+        Acount loydsPersonalDominik = new Acount(TypeOfAccount.PERSONAL_ACCOUNT);
+        Acount loydsSavingDominik = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
         dominik.addAccountToList(loydsPersonalDominik);
         dominik.addAccountToList(loydsSavingDominik);
 
         //wpłada na rachunek Saving
-        loydsSavingDominik.transferToAccount(2000D);
+        loydsSavingDominik.isdepositComplete(2000D);
         //wyplata z rachunku Saving
         loydsSavingDominik.withDraw(6000);
 
         //dodanie rachunku do klienta
-        Acount loydsSavingNatalia = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 2000D, 89561234569845321L);
+        Acount loydsSavingNatalia = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
         natalia.addAccountToList(loydsSavingNatalia);
+        //wplata na rachunek oszczednosciowy
+        loydsSavingNatalia.isdepositComplete(1590);
 
         //dodanie rachunków do klienta
-        Acount loydsSavingPawel = new Acount(TypeOfAccount.SAVINGS_ACCOUNT, 0, 123654789L);
-        Acount loydsPersonalPawel = new Acount(TypeOfAccount.PERSONAL_ACCOUNT, 100D, 789654123987L);
+        Acount loydsSavingPawel = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
+        Acount loydsPersonalPawel = new Acount(TypeOfAccount.PERSONAL_ACCOUNT);
         pawel.addAccountToList(loydsPersonalPawel);
         pawel.addAccountToList(loydsSavingPawel);
 
