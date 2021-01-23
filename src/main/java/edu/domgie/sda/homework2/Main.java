@@ -1,9 +1,13 @@
 package edu.domgie.sda.homework2;
 
+import edu.domgie.sda.java8.streams.Human;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
 
         Bank loyds = new Bank("Loyds Bank");
         // tworzenie nowych klientów
