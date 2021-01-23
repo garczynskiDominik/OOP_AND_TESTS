@@ -20,8 +20,8 @@ public class Acount {
         return balance;
     }
 
-    public long getAccountNumber() {
-        return accountNumber;
+    public String getAccountNumber() {
+        return formatter.format(accountNumber);
     }
 
     public TypeOfAccount getType() {
@@ -43,6 +43,13 @@ public class Acount {
             this.balance = this.balance - saldo;
             return true;
         } else return false;
+    }
+    public String getAccountInformation(boolean withBalance){
+        if (withBalance){
+            return "Account: type: "+getType()+", balance: "+getBalance()+", accountNumber: " +getAccountNumber();
+        }else {
+            return "Account: type: "+getType()+", accountNumber: " +getAccountNumber();
+        }
     }
 
     @Override

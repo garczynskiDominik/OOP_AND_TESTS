@@ -1,10 +1,5 @@
 package edu.domgie.sda.homework2;
 
-import edu.domgie.sda.java8.streams.Human;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -52,29 +47,49 @@ public class Main {
         loyds.removerCustomerIfDontHaveAccounts(pawel);
         loyds.removerCustomerIfDontHaveAccounts(dominik);
 
+
+        System.out.println("----------All Customers accounts with baalance-----------");
         //wyswietlenie uzytkowników z lista rachunkow z saldem
-        loyds.showCustomersAccountsWithSaldo();
-        System.out.println("---------------------");
+        loyds.showCustomersAccountsWithBalance(true);
+
+        System.out.println("\n----------All Customers accounts without balance-----------");
+        //wyswietlenie uzytkownikow z lista rachunkow bez salda
+        loyds.showCustomersAccountsWithBalance(false);
+
+        System.out.println("\n-----------Customer account with balance----------");
         //wyswietlenie rachunkow uzytkownika z saldem
-        dominik.showAccountsOfCustomerWithSaldo();
-        System.out.println("---------------------");
-        dominik.showAccountsOfCustomerWithoutSaldo();
-        System.out.println("---------------------");
+        dominik.showAccountsOfCustomerWithBalance(true);
+
+
+        System.out.println("\n----------Customer accounts without balance-----------");
+        //wyswietlanie rachunkow uzytkownika bez salda
+        dominik.showAccountsOfCustomerWithBalance(false);
+
+
+
+        System.out.println("\n-----------All accounts in bank with balance----------");
         //wyswietlenie rachunkow w banku z saldem
-        loyds.showAllAccountsFromBankWithSaldo();
-        System.out.println("----------------------");
+        loyds.showAllAccountsFromBankWithBalance(true);
+
+
+
+        System.out.println("\n----------All accounts in bank without balance------------");
+        // wyswietlanie rachunkow w banku bez salda
+        loyds.showAllAccountsFromBankWithBalance(false);
+
+
 
 
     }
 }
 
 
-//założenie klienta !
-//założenie rachunku dla klienta !
-//usunięcie rachunku dla klienta (jeśli stan środków = 0)
-//usunięcie klienta (jeśli nie ma rachunków)
-//wpłata na rachunek
-//wypłata z rachunku (do wysokości salda)
+
+
+
+
+
+
 //wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
 //wypisanie rachunków podanego klienta (z saldem lub bez)
 //wypisanie wszystkich rachunków w banku(z saldami lub bez)

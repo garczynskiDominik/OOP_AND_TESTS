@@ -1,27 +1,13 @@
 package edu.domgie.sda.homework2;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Bank {
 
-    class AccountWithoutBalance {
-        private String firstName;
-        private String lastName;
-        private int idNumber;
-        private List<Acount> listOfAccounts;
-
-        public AccountWithoutBalance(String firstName, String lastName, int idNumber, List<Acount> listOfAccounts) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.idNumber = idNumber;
-            this.listOfAccounts = listOfAccounts;
-        }
-
-    }
-
-
+    private NumberFormat formatter = new DecimalFormat("#000");
     private String nameBank;
     private List<Customer> listOfClients;
 
@@ -43,24 +29,13 @@ public class Bank {
     }
 
     //wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
-    public void showCustomersAccountsWithSaldo() {
-        listOfClients.forEach(System.out::println);
+    public void showCustomersAccountsWithBalance(boolean withBalance) {
+        listOfClients
+                .forEach(client-> System.out.println(client.getFirstName()+", "+client.getLastName()+", ID: "+formatter.format(client.getIdNumber())+", "+client.getAccount(withBalance)));
     }
-
-//    public void showCustomersAccountsWithoutSaldo() {
-//        listOfClients.stream().
-//    }
-
 
     //wypisanie wszystkich rachunków w banku(z saldami lub bez)
-    public void showAllAccountsFromBankWithSaldo() {
-        listOfClients.forEach(client -> System.out.println(client.getListOfAccounts()));
+    public void showAllAccountsFromBankWithBalance(boolean withBalance) {
+        listOfClients.forEach(client -> client.getListOfAccounts().stream().forEach(x-> System.out.println(x.getAccountInformation(withBalance))));
     }
-
-//    public void showAllAccountsFromBankWithoutSaldo() {
-//        for (Customer client : listOfClients) {
-//            System.out.println(client.getListOfAccounts());
-//        }
-//    }
-
 }
