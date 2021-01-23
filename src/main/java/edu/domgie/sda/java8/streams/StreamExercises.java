@@ -7,6 +7,38 @@ import java.util.stream.Stream;
 public class StreamExercises {
     public static void main(String[] args) {
         ArrayList<Human> people = new ArrayList<>();
+        /**
+         * Zasada dzialania strumieni= wszystko plynie, czyli nie da sie drugi raz wejsc do tego samego strumienia
+         *
+         *
+         * 1. Metody dzialajace na strumieniach dzielimy na 3 grupy musi wystapic jedna
+         * -stream() na kolekcjach
+         * -of() na elementach wyliczeniowych
+         * -Arrays,stream(Object[]) na elementach tabeli
+         * - na danych z pliku
+         * - ... z kazda kolejna java pojawia sie cos nowego
+         *
+         *
+         * 2. Metody posrednie- mozna laczyc, nie musi wystapic
+         * -map przeksztalca element strumienia w inny (Human->String, String->String
+         * flatMao - splaszczajaca elementy z kilku strumieni do jednego
+         * filter- filtruje emelenty strumienia
+         * limit - ogranicza ilosc elementow dalszego rpzetwarzania
+         * sorted- sortuje wg domyslnego lub wskazanego komparatora
+         * distinct- wybierajaca elementy niepowtarzalne
+         *
+         *
+         * 3. Metody konczace strumien- musi wystapic jedna
+         * toArray- tworzy tablice z elementow strumienia
+         * collect- tworzy kolekcje z elementow strumeiinia
+         * reduce - zwraca jedna wartosc wg wskazanego emmchanizmu
+         * count- zwraca ilosc elementow
+         * findFirst- zwraca  optionala od pierwszego znalezionego obiektu<Optional<Object>
+         * findAny zwraca optionala od dowolnego znalezionego obiektu(ktory spelnia kryteria
+         * foreach nic nie zwraca, wykonuje dzialanie na elementach strumienia
+         */
+
+
         //DTD czyli Data Transfer Objectt czyli klasa pomocnicza
         // ktora ma przechowywac wycinek danych
 
@@ -82,25 +114,60 @@ public class StreamExercises {
         humanDTOSfromStream = people.stream()
                 .map(x -> new HumanDTO(x.getName(), x.getSurname()))
                 .collect(Collectors.toList());
-        humanDTOSfromStream.forEach(x-> System.out.println(x.getHumanData()));
-        System.out.println("---------------------------------------------------");
+        humanDTOSfromStream.forEach(x -> System.out.println(x.getHumanData()));
 
+        //robienie jednej listy z dwoch
+        System.out.println("---------------------------------------------------");
         List<Human> newCommonHumnkind = new ArrayList<>();
         newCommonHumnkind.addAll(mans);
         newCommonHumnkind.addAll(woman);
-       newCommonHumnkind.forEach(System.out::println);
-        System.out.println("---------------------------------------------------");
+        newCommonHumnkind.forEach(System.out::println);
 
+        System.out.println("---------------------------------------------------");
         //Stream.of robi strumien z podanych elementow
         //po wyjsciu mamy strumien 2 elementow, elementy to listy
         //flatMap robi z dwoch elementow nowy strumien ludzi
         //flatMap robi z list ludzi strumien ludzi
         List<Human> newFromStreamHumankind = new ArrayList<>();
-        newFromStreamHumankind = Stream.of(mans,woman)
-                .flatMap(a->a.stream())
+        newFromStreamHumankind = Stream.of(mans, woman)
+                .flatMap(a -> a.stream())
                 .collect(Collectors.toList());
         newFromStreamHumankind.forEach(System.out::println);
 
+        //WAZNE  sumowanie wieku obiektów
+        System.out.println("---------------------------------------------------");
+        int sumOfAge = people.stream()
+                .map(Human::getAge)
+                .reduce(0, (suma, nowy) -> suma + nowy);
+        System.out.println(sumOfAge);
 
+        //zwraca jeden string laczacy wszystkie imiona
+        System.out.println("---------------------------------------------------");
+        String namesJoined = people.stream()
+                .map(Human::getName)
+                .collect(Collectors.joining());
+        System.out.println(namesJoined);
+
+        //zwracamy string laczacy wszystkie nazwiska
+        System.out.println("---------------------------------------------------");
+        String surnmanesJoined = people.stream()
+                .map(Human::getSurname)
+                .collect(Collectors.joining(", "));
+        System.out.println(surnmanesJoined);
+
+        //zwracamy sting laczacy wszystkie nazwiska z nawiasmi przed i po
+        System.out.println("---------------------------------------------------");
+        String surnamesJoinedJsonStyle = people.stream()
+                .map(Human::getSurname)
+                .collect(Collectors.joining(", ", "{", "}"));
+
+        System.out.println(surnamesJoinedJsonStyle);
+
+        // z listy robimy mape
+        System.out.println("---------------------------------------------------");
+        Map<String, Human> humanMaps = people.stream()
+                .collect(Collectors.toMap(Human::getName, human->human));
+
+        humanMaps.forEach((k,v) -> System.out.println(k+v));
     }
 }
