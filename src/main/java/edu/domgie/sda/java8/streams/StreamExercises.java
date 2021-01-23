@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 public class StreamExercises {
     public static void main(String[] args) {
-        ArrayList<Human> people = new ArrayList<>();
         /**
          * Zasada dzialania strumieni= wszystko plynie, czyli nie da sie drugi raz wejsc do tego samego strumienia
          *
@@ -55,15 +54,16 @@ public class StreamExercises {
                 return surname + ", " + name;
             }
         }
+        ArrayList<Human> people = new ArrayList<>();
 
         //3 obiekty z pierwszego konstruktora gdzie deklaruje enum
-        people.add(new Human("Dominik", "Gaczynski", 18, Gender.MAN));
+        people.add(new Human("Dominik", "Garczynski", 18, Gender.MAN));
         people.add(new Human("Natalia", "Starenga", 28, Gender.WOMAN));
         people.add(new Human("Wojtek", "Kowalsky", 50, Gender.MAN));
 
         //3 obiekty z drugiego konstruktora gdzie podajemy skrot płci
         people.add(new Human("Agata", "Pachel", 43, "K"));
-        people.add(new Human("Marek", "Koperski", 12, "M"));
+        people.add(new Human("Marek", "Garczynski", 12, "M"));
         people.add(new Human("Zosia", "Wisniewska", 34, "K"));
 
 
@@ -166,8 +166,34 @@ public class StreamExercises {
         // z listy robimy mape
         System.out.println("---------------------------------------------------");
         Map<String, Human> humanMaps = people.stream()
-                .collect(Collectors.toMap(Human::getName, human->human));
+                .collect(Collectors.toMap(Human::getName, human -> human));
 
-        humanMaps.forEach((k,v) -> System.out.println(k+v));
+        humanMaps.keySet().stream()
+                .map(x -> humanMaps.get(x))
+                .forEach(System.out::println);
+
+// grupowanie elementów, klucz to wartosc a value to ile takich wystapie
+        System.out.println("---------------------------------------------------");
+        Map<String, List<Human>> peopleGroupBySurname = new HashMap<>();
+        peopleGroupBySurname=people.stream()
+                .collect(Collectors.groupingBy(Human::getSurname,Collectors.toList()));
+        peopleGroupBySurname.forEach((k,v)-> System.out.println(k+", "+v));
+        System.out.println("---------------------------------------------------");
+
+        List<Human> garczysnkiList = peopleGroupBySurname.entrySet()
+                .stream()
+                .filter(entry-> entry.getKey().equals("Garczynski"))
+                .map(entry-> entry.getValue())
+                //zwraca optional, jesli nie znajdzie to wykonuje orElseGet
+                .findFirst()
+                //wykona sie jesli  nie znajdzie sie wlasciwy obiekt
+                .orElseGet(()->Collections.EMPTY_LIST);
+
+        garczysnkiList.forEach(System.out::println);
+
+
     }
+
+
+
 }
