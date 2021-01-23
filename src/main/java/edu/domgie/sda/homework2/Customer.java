@@ -1,19 +1,24 @@
 package edu.domgie.sda.homework2;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
+
+    private NumberFormat formatter = new DecimalFormat("#000");
+    private static int counterOfIdNumber=1;
     private String firstName;
     private String lastName;
-    private int idNumber;
+    private int idNumber ;
     private List<Acount> listOfAccounts;
 
-    public Customer(String firstName, String lastName, int idNumber) {
+    public Customer(String firstName, String lastName) {
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.idNumber = idNumber;
+        this.idNumber = counterOfIdNumber++;
         this.listOfAccounts = new ArrayList<Acount>();
     }
 
@@ -24,7 +29,7 @@ public class Customer {
 
     //usunięcie rachunku dla klienta (jeśli stan środków = 0)
     public void removeAccountFromCustomerListIFSaldo0(Acount account) {
-        if (account.getSaldo() == 0) {
+        if (account.getBalance() == 0) {
             listOfAccounts.remove(account);
         }
     }
@@ -47,13 +52,12 @@ public class Customer {
         });
     }
 
-
     @Override
     public String toString() {
         return "Customer: " +
                 " " + firstName +
                 ", " + lastName +
-                ", ID: " + idNumber +
+                ", ID: " +formatter.format(idNumber)  +
                 ", " + listOfAccounts;
     }
 }

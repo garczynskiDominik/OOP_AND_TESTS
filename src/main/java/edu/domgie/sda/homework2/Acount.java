@@ -1,18 +1,23 @@
 package edu.domgie.sda.homework2;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Acount {
+    NumberFormat formatter = new DecimalFormat("#0000000000");
+    private static long accountNumberCounter = 1;
     private TypeOfAccount type;
-    private double saldo;
+    private double balance;
     private long accountNumber;
 
-    public Acount(TypeOfAccount type, double saldo, long accountNumber) {
+    public Acount(TypeOfAccount type) {
         this.type = type;
-        this.saldo = saldo;
-        this.accountNumber = accountNumber;
+        this.balance = 0;
+        this.accountNumber = accountNumberCounter++;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public double getBalance() {
+        return balance;
     }
 
     public long getAccountNumber() {
@@ -24,22 +29,27 @@ public class Acount {
     }
 
     //wpłata na rachunek
-    public void transferToAccount(double saldo) {
-        this.saldo = this.saldo + saldo;
+    public boolean isdepositComplete(double saldo) {
+        this.balance = this.balance + saldo;
+        if (this.balance != this.balance + saldo) {
+            return false;
+        }
+        return true;
     }
 
     //wypłata z rachunku (do wysokości salda)
-    public void withDraw(double saldo) {
-        if (saldo < this.saldo - saldo) {
-            this.saldo = this.saldo - saldo;
-        }
+    public boolean withDraw(double saldo) {
+        if (saldo < this.balance - saldo) {
+            this.balance = this.balance - saldo;
+            return true;
+        } else return false;
     }
 
     @Override
     public String toString() {
         return "Acount: " +
                 "type: " + type +
-                ", saldo: " + saldo +
-                ", accountNumber: " + accountNumber;
+                ", balance: " + balance +
+                ", accountNumber: " + formatter.format(accountNumber);
     }
 }

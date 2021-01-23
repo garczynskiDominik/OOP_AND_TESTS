@@ -2,8 +2,26 @@ package edu.domgie.sda.homework2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Bank {
+
+    class AccountWithoutBalance {
+        private String firstName;
+        private String lastName;
+        private int idNumber;
+        private List<Acount> listOfAccounts;
+
+        public AccountWithoutBalance(String firstName, String lastName, int idNumber, List<Acount> listOfAccounts) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.idNumber = idNumber;
+            this.listOfAccounts = listOfAccounts;
+        }
+
+    }
+
+
     private String nameBank;
     private List<Customer> listOfClients;
 
@@ -30,7 +48,7 @@ public class Bank {
     }
 
 //    public void showCustomersAccountsWithoutSaldo() {
-//        listOfClients.forEach(System.out::println);
+//        listOfClients.stream().
 //    }
 
 
