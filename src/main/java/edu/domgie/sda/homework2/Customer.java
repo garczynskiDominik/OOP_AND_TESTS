@@ -38,13 +38,13 @@ public class Customer {
         return listOfAccounts;
     }
 
-    public String getAccount(boolean withBalance) {
+    public List getAccount(boolean withBalance) {
+        List<String> listAccoutn = new ArrayList<>();
         for (Acount acount : listOfAccounts) {
-            return acount.getAccountInformation(withBalance);
-
+            listAccoutn.add(acount.getAccountInformation(withBalance));
+//            return acount.getAccountInformation(withBalance);
         }
-        // wyswietla tylko jedne konto danego użytkowanika, pomija kolejne
-        return null;
+       return listAccoutn;
     }
 
     public String getFirstName() {
