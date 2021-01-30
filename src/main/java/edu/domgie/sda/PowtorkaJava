@@ -1,0 +1,56 @@
+1. Wątki
+- jaka metoda do wpisania kodu do wykonania wątku
+-jaka metoda do uruchomienia wątku
+-jaka metoda do połączenia wątkow
+-slowo kluczowe ktoro pozwala na wykonanie kodu 1 watkowi na raz
+- powiadomienie innych watkow ze bieżący skonczyl prace
+
+2.Error i Exceptiom
+-roznica miedzy error a exception
+- roznica mieczy checked(sprawdzanym) i unchecked(niesprawdzanym)exception
+-ArrayOutOfBound vs IndexOutOfBound
+
+3. Kolekcje
+a.Listy
+-co można i nie można trzymac w koklekcjach
+-różnice miedzy ArrayList i LinkedList
+-czy elementy moga sie powtarzac
+
+b.Sety
+-czy elementy moga sie powtarzac
+-roznice miedzy HashSet/TreeSet(ewentualnie LinkedHashSet
+
+c.Mapy
+-czy elementy moga sie powtarzac
+-roznice miedzy hashMap/TreeMap
+
+
+4.IO
+-klasy do odczytu/zapisu
+-IO/NIO roznice
+
+
+
+5.ENUM
+-co to
+-czy mozna dokladac wartosci
+-czy moze miec pola/metody/konstruktoey
+-wykorzystanie w if/switch
+
+6.OOP
+-czym jest klasa abstrakcyjna? co może mieć /nie miec
+-czym jest interfejs moze miec a co nie
+-dziedziczenie- po ilu klasach
+-interfejsy- ile moze dana klasa implementowac?
+-czym jest klasa immutable
+
+
+
+7.Releksja
+-co to jest?
+-co jest mozliwe dzieki refleksji a nies mozliwe "normalnym kodem"
+
+9. Java8
+-co robia instrukcje .map() .filter() .collect
+-co to jest Optional
+-
