@@ -54,7 +54,8 @@ public class ReflectionDemo {
             studentRef.setSurname("Zimejko");
             System.out.println(studentRef.getName() + ", " + studentRef.getSurname());
             Method getAllUniversityInfoMetod = studentClass.getDeclaredMethod("getAllUniversityInfo");
-            // System.out.println(getAllUniversityInfoMetod.invoke(studentRef));
+            getAllUniversityInfoMetod.setAccessible(true);
+             System.out.println(getAllUniversityInfoMetod.invoke(studentRef));
 
 
         } catch (ClassNotFoundException e) {
