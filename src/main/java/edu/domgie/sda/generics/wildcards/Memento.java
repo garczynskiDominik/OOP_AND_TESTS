@@ -7,7 +7,7 @@ public class Memento {
         this.note = note;
     }
 
-    public Note getNote() {
-        return note;
+    public String getInfo() {
+        return note.getNote();
     }
 }
