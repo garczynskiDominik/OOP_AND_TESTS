@@ -1,51 +1,31 @@
 package edu.domgie.sda.homework2;
 
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args) {
 
 
         Bank loyds = new Bank("Loyds Bank");
-        // tworzenie nowych klientów
-        Customer dominik = new Customer("Dominik", "Garczynski");
-        Customer natalia = new Customer("Natalia", "Starenga");
-        Customer pawel = new Customer("Pawel", "Wolos");
+
+        loyds.createNewCustomer("Tomek", "Kozak");
+        loyds.createNewCustomer("Damian", "Kozik");
+        loyds.createNewCustomer("Krystian", "Malek");
+        loyds.createNewCustomer("Andrzej", "Mazur");
+
+        loyds.addAccountToCustomerList("Tomek", "Kozak","SN");
+        loyds.addAccountToCustomerList("Tomek", "Kozak", "PN");
+        loyds.addAccountToCustomerList("Damian", "Kozik", "SN");
+        loyds.addAccountToCustomerList("Krystian", "Malek", "PN");
 
 
-        //dodanie klientow do banku
-        loyds.addCustomerToBank(dominik);
-        loyds.addCustomerToBank(natalia);
-        loyds.addCustomerToBank(pawel);
+        loyds.isDeposit("Tomek", "Kozak", "PN", new BigDecimal(25));
+        loyds.withDraw("Tomek", "Kozak", "PN", new BigDecimal(15));
+
+        loyds.isDeposit("Krystian", "Malek", "SN", new BigDecimal(2445));
 
 
-        //dodanie rachunkow do klienta
-        Acount loydsPersonalDominik = new Acount(TypeOfAccount.PERSONAL_ACCOUNT);
-        Acount loydsSavingDominik = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
-        dominik.addAccountToList(loydsPersonalDominik);
-        dominik.addAccountToList(loydsSavingDominik);
-
-        //wpłada na rachunek Saving
-        loydsSavingDominik.isdepositComplete(2000D);
-        //wyplata z rachunku Saving
-        loydsSavingDominik.withDraw(6000);
-
-        //dodanie rachunku do klienta
-        Acount loydsSavingNatalia = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
-        natalia.addAccountToList(loydsSavingNatalia);
-        //wplata na rachunek oszczednosciowy
-        loydsSavingNatalia.isdepositComplete(1590);
-
-        //dodanie rachunków do klienta
-        Acount loydsSavingPawel = new Acount(TypeOfAccount.SAVINGS_ACCOUNT);
-        Acount loydsPersonalPawel = new Acount(TypeOfAccount.PERSONAL_ACCOUNT);
-        pawel.addAccountToList(loydsPersonalPawel);
-        pawel.addAccountToList(loydsSavingPawel);
-
-        //usuwanie rachunku ktorego saldo wynosi 0
-        pawel.removeAccountFromCustomerListIFSaldo0(loydsPersonalPawel);
-
-        //usuwanie klienta ktory nie ma rachunku
-        loyds.removerCustomerIfDontHaveAccounts(pawel);
-        loyds.removerCustomerIfDontHaveAccounts(dominik);
+       loyds.removeCustomerWihoutAccountsFromBank("Andrzej", "Mazur");
 
 
         System.out.println("----------All Customers accounts with baalance-----------");
@@ -58,13 +38,12 @@ public class Main {
 
         System.out.println("\n-----------Customer account with balance----------");
         //wyswietlenie rachunkow uzytkownika z saldem
-        dominik.showAccountsOfCustomerWithBalance(true);
+        loyds.showAccountOneCustomer("Tomek", "Kozak", true);
 
 
         System.out.println("\n----------Customer accounts without balance-----------");
         //wyswietlanie rachunkow uzytkownika bez salda
-        dominik.showAccountsOfCustomerWithBalance(false);
-
+        loyds.showAccountOneCustomer("Tomek", "Kozak", false);
 
 
         System.out.println("\n-----------All accounts in bank with balance----------");
@@ -72,24 +51,13 @@ public class Main {
         loyds.showAllAccountsFromBankWithBalance(true);
 
 
-
         System.out.println("\n----------All accounts in bank without balance------------");
         // wyswietlanie rachunkow w banku bez salda
         loyds.showAllAccountsFromBankWithBalance(false);
-
-
 
 
     }
 }
 
 
-
-
-
-
-
-
-//wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
-//wypisanie rachunków podanego klienta (z saldem lub bez)
-//wypisanie wszystkich rachunków w banku(z saldami lub bez)
+//+big decimal,+w petli do,+

@@ -1,5 +1,6 @@
 package edu.domgie.sda.homework2;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -16,26 +17,106 @@ public class Bank {
         this.listOfClients = new ArrayList();
     }
 
-    //założenie klienta
-    public void addCustomerToBank(Customer customer) {
-        listOfClients.add(customer);
+    public boolean createNewCustomer(String firstName, String lastName) {
+        return listOfClients.add(new Customer(firstName, lastName));
     }
 
-    //usunięcie klienta (jeśli nie ma rachunków)
-    public void removerCustomerIfDontHaveAccounts(Customer customer) {
-        if (customer.getListOfAccounts().size() == 0) {
-            listOfClients.remove(customer);
+    public boolean addAccountToCustomerList(String firstName, String lastName, String type) {
+
+        for (Customer customer : listOfClients) {
+            if (firstName.equalsIgnoreCase(customer.getFirstName()) && lastName.equalsIgnoreCase(customer.getLastName())) {
+                customer.addAccountToList(new Acount(type));
+                return true;
+            }
         }
+        System.out.println("We dont have any customer: " + firstName + ", " + lastName);
+        return false;
+    }
+
+    public boolean isDeposit(String firstName, String lastName, String acount, BigDecimal sum) {
+        for (Customer customer : listOfClients) {
+            if (firstName.equalsIgnoreCase(customer.getFirstName()) &&
+                    lastName.equalsIgnoreCase(customer.getLastName())) {
+                for (Acount account : customer.getListOfAccounts()) {
+                    if (account.getType().equals(TypeOfAccount.getByShortcut(acount))) {
+                        account.setBalance(account.getBalance().add(sum));
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean withDraw(String firstName, String lastName, String acount, BigDecimal sum) {
+        for (Customer customer : listOfClients) {
+            if (firstName.equalsIgnoreCase(customer.getFirstName()) &&
+                    lastName.equalsIgnoreCase(customer.getLastName())) {
+                for (Acount account : customer.getListOfAccounts()) {
+                    if (account.getType().equals(TypeOfAccount.getByShortcut(acount))) {
+                        if (sum.compareTo(account.getBalance()) < 0) {
+                            account.setBalance(account.getBalance().subtract(sum));
+                            return true;
+                        }
+
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean removeAccountWithoutMoneyFromCustomer(String firstName, String lastName) {
+        for (Customer customer : listOfClients) {
+            if (firstName.equalsIgnoreCase(customer.getFirstName()) &&
+                    lastName.equalsIgnoreCase(customer.getLastName())) {
+                for (Acount acount : customer.getListOfAccounts()) {
+                    if (acount.getBalance().equals(0)) {
+                        customer.getListOfAccounts().remove(acount);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean removeCustomerWihoutAccountsFromBank(String firstName, String lastName) {
+        for (Customer customer : listOfClients) {
+            if (firstName.equalsIgnoreCase(customer.getFirstName()) &&
+                    lastName.equalsIgnoreCase(customer.getLastName())) {
+                if (customer.getListOfAccounts().size() == 0) {
+                    listOfClients.remove(customer);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void showAccountOneCustomer(String firstName, String lastName, boolean withbalance) {
+        listOfClients.stream()
+                .filter(customer -> firstName.equalsIgnoreCase(customer.getFirstName()) &&
+                        lastName.equalsIgnoreCase(customer.getLastName()))
+                .forEach(customer -> customer.showAccountsOfCustomerWithBalance(withbalance));
+
+
+//        for (Customer customer : listOfClients) {
+//            if (firstName.equalsIgnoreCase(customer.getFirstName()) &&
+//                    lastName.equalsIgnoreCase(customer.getLastName())) {
+//                customer.showAccountsOfCustomerWithBalance(withbalance);
+//            }
+//        }
     }
 
     //wypisanie klientów banku (z listą rachunków(w zależności od żądania z saldem lub bez))
     public void showCustomersAccountsWithBalance(boolean withBalance) {
         listOfClients
-                .forEach(client-> System.out.println(client.getFirstName()+", "+client.getLastName()+", ID: "+formatter.format(client.getIdNumber())+", "+client.getAccount(withBalance)));
+                .forEach(client -> System.out.println(client.getFirstName() + ", " + client.getLastName() + ", ID: " + formatter.format(client.getIdNumber()) + ", " + client.getAccount(withBalance)));
     }
 
     //wypisanie wszystkich rachunków w banku(z saldami lub bez)
     public void showAllAccountsFromBankWithBalance(boolean withBalance) {
-        listOfClients.forEach(client -> client.getListOfAccounts().stream().forEach(x-> System.out.println(x.getAccountInformation(withBalance))));
+        listOfClients.forEach(client -> client.getListOfAccounts().stream().forEach(x -> System.out.println(x.getAccountInformation(withBalance))));
     }
 }
