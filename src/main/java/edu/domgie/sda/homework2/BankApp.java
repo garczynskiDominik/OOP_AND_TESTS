@@ -26,7 +26,8 @@ public class BankApp {
                             "2. Open a new account customer.\n" +
                             "3. Deposit money to account.\n" +
                             "4. Withdraw money from account.\n" +
-                            "5. Show details.");
+                            "5. Delete customer without money\\acount.\n" +
+                            "6. Show details.");
             int answerToMainMenu = scanner.nextInt();
 
             switch (answerToMainMenu) {
@@ -75,6 +76,17 @@ public class BankApp {
                     break;
                 }
                 case 5: {
+                    System.out.println("Who you want to delete?");
+                    System.out.println("Please give your first name.");
+                    String firstname = scanner.next();
+                    System.out.println("Please give me your last name");
+                    String lastName = scanner.next();
+                    System.out.println("If " + firstname + " " + lastName + " don't have money on account or don't have account, will be delete");
+                    loyds.removeCustomerWihoutAccountsFromBank(firstname, lastName);
+                    loyds.removeAccountWithoutMoneyFromCustomer(firstname, lastName);
+
+                }
+                case 6: {
                     System.out.println("What you want to display?");
                     System.out.println(
                             "1. All customers with details,\n" +
