@@ -1,5 +1,7 @@
 package edu.domgie.sda.homework2;
 
+import java.util.Arrays;
+
 public enum TypeOfAccount {
     PERSONAL_ACCOUNT("PN"),
     SAVINGS_ACCOUNT("SN");
