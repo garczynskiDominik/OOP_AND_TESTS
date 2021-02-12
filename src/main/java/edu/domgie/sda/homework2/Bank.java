@@ -33,6 +33,13 @@ public class Bank {
         return false;
     }
 
+    public boolean migrateAccountForCustomer(String firstName, String lastName, String type, BigDecimal amount) {
+        Acount acount = new Acount(type);
+        return listOfClients.stream()
+                .filter(customer -> firstName.equalsIgnoreCase(customer.getFirstName()) && lastName.equalsIgnoreCase(customer.getLastName()))
+                .findAny().get().addMigratedAccount(acount, amount);
+    }
+
     public boolean isDeposit(String firstName, String lastName, String acount, BigDecimal sum) {
         for (Customer customer : listOfClients) {
             if (firstName.equalsIgnoreCase(customer.getFirstName()) &&

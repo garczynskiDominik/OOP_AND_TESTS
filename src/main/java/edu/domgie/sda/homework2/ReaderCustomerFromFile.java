@@ -16,15 +16,8 @@ public class ReaderCustomerFromFile {
             List<String> tabCustomer = Arrays.asList(line.split("\\|"));
             loyds.createNewCustomer(tabCustomer.get(1), tabCustomer.get(2));
             if (tabCustomer.size() > 3) {
-                loyds.addAccountToCustomerList(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(3));
-                if (tabCustomer.size() > 4) {
-                    loyds.isDeposit(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(3), BigDecimal.valueOf(Integer.parseInt(tabCustomer.get(4))));
-                    if (tabCustomer.size() > 5) {
-                        loyds.addAccountToCustomerList(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(5));
-                        if (tabCustomer.size() > 6) {
-                            loyds.isDeposit(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(5), BigDecimal.valueOf(Integer.parseInt(tabCustomer.get(6))));
-                        }
-                    }
+                for (int i = 3; i < tabCustomer.size(); i+=2) {
+                    loyds.migrateAccountForCustomer(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(i), new BigDecimal(tabCustomer.get(i+1)));
                 }
             }
         }

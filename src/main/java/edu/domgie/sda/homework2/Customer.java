@@ -1,5 +1,6 @@
 package edu.domgie.sda.homework2;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -66,5 +67,10 @@ public class Customer {
                 ", " + lastName +
                 ", ID: " + formatter.format(idNumber) +
                 ", " + listOfAccounts;
+    }
+
+    public boolean addMigratedAccount(Acount acount, BigDecimal amount) {
+         acount.setBalance(amount);
+         return listOfAccounts.add(acount);
     }
 }

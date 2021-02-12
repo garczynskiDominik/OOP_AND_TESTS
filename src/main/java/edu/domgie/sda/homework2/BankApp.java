@@ -18,7 +18,7 @@ public class BankApp {
 
 
         new ReaderCustomerFromFile().readCustomerFromFile(loyds, inputPath);
-        new ReaderCustomerFromFile().readCustomerFromFileV2(loyds, inputPath);
+        //new ReaderCustomerFromFile().readCustomerFromFileV2(loyds, inputPath);
 
         System.out.println("Hello in Loyds Bank UK. How Can i Help You?\n");
         String answerBackToMainMenu;
