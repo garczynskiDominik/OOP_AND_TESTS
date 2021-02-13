@@ -12,6 +12,9 @@ public class OptionalDemo {
         people.add(new Human("Natalia", "Starenga", 28, Gender.WOMAN));
         people.add(new Human("Wojtek", "Kowalsky", 50, Gender.MAN));
 
+
+        Human human = new Human("d","s",2,Gender.MAN);
+
         //3 obiekty z drugiego konstruktora gdzie podajemy skrot płci
         people.add(new Human("Agata", "Pachel", 43, "K"));
         people.add(new Human("Marek", "Garczynski", 12, "M"));

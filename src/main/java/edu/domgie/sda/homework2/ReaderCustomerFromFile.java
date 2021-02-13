@@ -32,11 +32,15 @@ public class ReaderCustomerFromFile {
 
     public void readCustomerFromFileV2(Bank loyds, Path inputPath) throws IOException {
         List<String> lines = Files.readAllLines(inputPath, Charset.forName("UTF-8"));
-        for (int i = 0; i < lines.size(); i++) {
-            List<String> tabCustomer = Arrays.asList(lines.get(i).split("\\|"));
-           // loyds.createNewCustomer(tabCustomer.get(), )
+        for (String line : lines) {
+            List<String> tabCustomer = Arrays.asList(line.split("\\|"));
+            loyds.createNewCustomer(tabCustomer.get(1), tabCustomer.get(2));
+            if (tabCustomer.size() > 3) {
+                for (int i = 3; i < tabCustomer.size(); i += 2) {
+                    loyds.migrateAccountForCustomer(tabCustomer.get(1), tabCustomer.get(2), tabCustomer.get(i), new BigDecimal(tabCustomer.get(i + 1)));
+                }
+            }
         }
-
-
     }
 }
+

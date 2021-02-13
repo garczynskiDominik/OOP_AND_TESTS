@@ -16,6 +16,7 @@ public enum Gender {
         this.translationPl = translationPl;
     }
 
+
     public int getIndex() {
         return index;
     }

@@ -8,16 +8,16 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class BankApp {
+
+    private static String giveFirstName = "Please give your first name.";
+    private static String giveLastName = "Please give me your last name";
+
     public static void main(String[] args) throws IOException {
         Bank loyds = new Bank("Loyds Bank UK");
         Scanner scanner = new Scanner(System.in);
-        Path inputPath = Paths.get("C:\\Users\\xxx\\Desktop\\Customers.txt");
+        Path inputPath = Paths.get("C:\\Users\\xxx\\Desktop\\java\\Customers.txt");
 
-        //String giveFirstName = "Please give your first name.";
-        // String giveLastName = "Please give me your last name";
-
-
-        new ReaderCustomerFromFile().readCustomerFromFile(loyds, inputPath);
+        //new ReaderCustomerFromFile().readCustomerFromFile(loyds, inputPath);
         new ReaderCustomerFromFile().readCustomerFromFileV2(loyds, inputPath);
 
         System.out.println("Hello in Loyds Bank UK. How Can i Help You?\n");
@@ -105,9 +105,9 @@ public class BankApp {
     }
 
     private static void showCustomerDetails(Bank loyds, Scanner scanner, boolean b) {
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         loyds.showAccountOneCustomer(firstname, lastName, b);
 
@@ -115,9 +115,9 @@ public class BankApp {
 
     private static void deleteCustomerOrAccount(Bank loyds, Scanner scanner) {
         System.out.println("Who you want to delete?");
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         System.out.println("If " + firstname + " " + lastName + " don't have money on account or don't have account, will be delete");
         loyds.removeCustomerWihoutAccountsFromBank(firstname, lastName);
@@ -127,9 +127,9 @@ public class BankApp {
 
     private static void withdrawMoney(Bank loyds, Scanner scanner) {
         System.out.println("From whose account you want to withdraw money?");
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         System.out.println("Which account you want to withdraw money from? (Personal, Saving)");
         String typeOfAccount = scanner.next();
@@ -141,9 +141,9 @@ public class BankApp {
 
     private static void depositMoney(Bank loyds, Scanner scanner) {
         System.out.println("Who you want to deposit money to?");
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         System.out.println("To which account you want to deposit money(Personal, Saving)");
         String typeOfAccount = scanner.next();
@@ -153,9 +153,9 @@ public class BankApp {
     }
 
     private static void openNewAccount(Bank loyds, Scanner scanner) {
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         System.out.println("What kind of account do you want to open? (PN- Personal, SN- Saving)");
         String typeOfAccount = scanner.next();
@@ -164,9 +164,9 @@ public class BankApp {
     }
 
     private static void addNewCustomer(Bank loyds, Scanner scanner) {
-        System.out.println("Please give your first name.");
+        System.out.println(giveFirstName);
         String firstname = scanner.next();
-        System.out.println("Please give me your last name");
+        System.out.println(giveLastName);
         String lastName = scanner.next();
         loyds.createNewCustomer(firstname, lastName);
 
